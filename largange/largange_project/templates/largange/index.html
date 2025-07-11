@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Interpolation de Lagrange</h2>
+
+<div class="lagrange-conditions">
+    <h3>Conditions nécessaires</h3>
+    <ul>
+        <li>Les abscisses <strong>x<sub>i</sub></strong> doivent être distinctes (pas de doublons).</li>
+        <li>Les abscisses et Les ordonnées <strong>x<sub>i</sub></strong> et <strong>y<sub>i</sub></strong> doivent être egaux.</li>
+        <li>Le nombre de points détermine le degré du polynôme (<strong>n</strong> points → degré ≤ <strong>n-1</strong>).</li>
+    </ul>
+</div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calculer</button>
+    </form>
+
+    {% if result %}
+    <div class="result-section">
+        <h3>Résultat :</h3>
+        <p><strong> Polynôme :</strong></p>
+        <p>{{ result }}</p>
+            {% if latex and latex != "None" %}
+        <p><strong> Latex :</strong></p>
+        <p>$$ {{ latex }} $$</p>
+    {% else %}
+        <p style="color:#c1121f;"><strong>Erreur :</strong> Veuillez vérifier que les conditions ci-dessus sont respectées (abscisses distinctes, listes de même taille...)</p>
+    {% endif %}
+    </div>
+    {% endif %}
+
+{% endblock content %}

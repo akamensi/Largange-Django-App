@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Interpolation de Lagrange</h1>
+
+<p>
+    L'interpolation de Lagrange est une méthode mathématique qui permet de trouver un polynôme unique (appelé <strong>polynôme de Lagrange</strong>) passant exactement par une série de points donnés :
+</p>
+<ul>
+    <li>(x<sub>0</sub>, y<sub>0</sub>), (x<sub>1</sub>, y<sub>1</sub>), …, (x<sub>n</sub>, y<sub>n</sub>)</li>
+</ul>
+<p>
+    où les x<sub>i</sub> sont tous distincts.
+</p>
+
+<p>
+    Ce polynôme <strong>P(x)</strong> est de degré au plus n et s'exprime comme une combinaison linéaire des polynômes de base de Lagrange <strong>L<sub>i</sub>(x)</strong> :
+</p>
+
+<p style="text-align:center;">
+    <strong>
+        P(x) = &sum;<sub>i=0</sub><sup>n</sup> y<sub>i</sub> &middot; L<sub>i</sub>(x)
+    </strong>
+</p>
+
+<p>
+    où
+</p>
+
+<p style="text-align:center;">
+    <strong>
+        L<sub>i</sub>(x) = &prod;<sub>j=0, j&ne;i</sub><sup>n</sup> &nbsp; (x - x<sub>j</sub>) / (x<sub>i</sub> - x<sub>j</sub>)
+    </strong>
+</p>
+
+<h3>Conditions nécessaires</h3>
+<ul>
+    <li>Les abscisses x<sub>i</sub> doivent être distinctes (pas de doublons).</li>
+    <li>Le nombre de points détermine le degré du polynôme (n points &rarr; degré &le; n-1).</li>
+</ul>
+
+{% endblock content %}
